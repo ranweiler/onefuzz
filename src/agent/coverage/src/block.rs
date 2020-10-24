@@ -34,10 +34,7 @@ pub fn find_module_blocks(object: Object) -> Result<Vec<Block>> {
     Ok(blocks)
 }
 
-pub fn find_function_blocks(
-    data: &[u8],
-    function: &Function,
-) -> Vec<Block> {
+pub fn find_function_blocks(data: &[u8], function: &Function) -> Vec<Block> {
     let leaders = find_function_leaders(data, function);
 
     let lo = function.address as usize;
@@ -124,12 +121,10 @@ fn find_function_leaders(data: &[u8], function: &Function) -> BTreeSet<u64> {
 
 fn branch_target(inst: &Instruction) -> Option<u64> {
     match inst.flow_control() {
-        FlowControl::ConditionalBranch |
-        FlowControl::UnconditionalBranch |
-        FlowControl::IndirectBranch =>
-            Some(inst.near_branch_target()),
-        _ =>
-            None,
+        FlowControl::ConditionalBranch
+        | FlowControl::UnconditionalBranch
+        | FlowControl::IndirectBranch => Some(inst.near_branch_target()),
+        _ => None,
     }
 }
 
