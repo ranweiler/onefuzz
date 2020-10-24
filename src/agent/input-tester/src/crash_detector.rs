@@ -14,7 +14,7 @@ use std::{
 };
 
 use anyhow::Result;
-use coverage::AppCoverageBlocks;
+use coverage::block::legacy::AppCoverageBlocks;
 use debugger::{
     debugger::{BreakpointId, BreakpointType, DebugEventHandler, Debugger},
     target::Module,

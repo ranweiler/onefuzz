@@ -12,8 +12,7 @@ use debugger::{
     target::Module,
 };
 
-use crate::{AppCoverageBlocks, ModuleCoverageBlocks};
-
+use crate::block::legacy::{AppCoverageBlocks, ModuleCoverageBlocks};
 
 pub fn record(cmd: Command) -> Result<AppCoverageBlocks> {
     let mut handler = BlockCoverageHandler::new();

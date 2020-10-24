@@ -19,7 +19,7 @@ use std::{
 };
 
 use anyhow::{Context, Result};
-use coverage::AppCoverageBlocks;
+use coverage::block::legacy::AppCoverageBlocks;
 use log::{error, info, trace, warn};
 use num_cpus;
 use rayon::{prelude::*, ThreadPoolBuilder};
@@ -115,7 +115,7 @@ impl Tester {
             None
         };
 
-        let coverage_map = coverage::load_coverage_map(&output_dir)?;
+        let coverage_map = coverage::block::legacy::load_coverage_map(&output_dir)?;
         Ok(Arc::new(Tester {
             appverif_controller,
             driver,

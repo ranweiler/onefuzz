@@ -1,7 +1,10 @@
 // Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
-#[cfg(windows)]
+#[cfg(target_os = "windows")]
+pub mod legacy;
+
+#[cfg(target_os = "windows")]
 pub mod windows;
 
 use std::collections::BTreeSet;

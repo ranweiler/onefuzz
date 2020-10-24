@@ -129,7 +129,7 @@ pub fn run_init(output_dir: PathBuf, modules: Vec<PathBuf>, function: bool) -> R
     let mut result = AppCoverageBlocks::new();
     for module in modules {
         if module.is_file() {
-            let rvas_bitset = pe::process_image(&module, function)?;
+            let rvas_bitset = crate::pe::process_image(&module, function)?;
 
             let module_name = module.file_stem().unwrap(); // Unwrap guaranteed by `is_file` test above.
             let module_rvas = ModuleCoverageBlocks::new(module.clone(), &module_name, rvas_bitset);
