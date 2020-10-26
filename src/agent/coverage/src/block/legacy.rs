@@ -62,6 +62,20 @@ impl ModuleCoverageBlocks {
         }
     }
 
+    pub fn from_iter(
+        path: impl Into<PathBuf>,
+        module: impl Into<OsString>,
+        rvas: impl Iterator<Item = u32>,
+    ) -> Self {
+        let blocks: Vec<_> = rvas.map(|rva| Block::new(rva, false)).collect();
+
+        ModuleCoverageBlocks {
+            path: path.into(),
+            module: module.into(),
+            blocks,
+        }
+    }
+
     pub fn path(&self) -> &Path {
         &self.path
     }
