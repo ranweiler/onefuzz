@@ -20,7 +20,7 @@ pub struct Block {
     pub size: u64,
 }
 
-pub fn find_module_blocks(object: Object) -> Result<Vec<Block>> {
+pub fn find_module_blocks(object: &Object) -> Result<Vec<Block>> {
     let session = object.debug_session().compat()?;
 
     let mut blocks = vec![];
