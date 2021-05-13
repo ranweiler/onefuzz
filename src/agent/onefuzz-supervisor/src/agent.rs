@@ -240,6 +240,9 @@ impl Agent {
             self.coordinator.emit_event(event.into()).await?;
         }
 
+        let delay = time::Duration::from_secs(5);
+        time::sleep(delay).await;
+
         Ok(updated.into())
     }
 
